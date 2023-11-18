@@ -1,5 +1,5 @@
 
-##### Backend
+# Instalación
 
 1. Descargar el proyecto de BackVynils del repositorio: https://github.com/MISW-4203-2023/BackVynils este es el backend de la herramienta
 2. Asegúrese de tener disponibles los puertos 3000 (para la aplicación web) y 5432 (para la base de datos postgres), puede cambiar estos puertos en el archivo docker-compose.yaml
