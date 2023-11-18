@@ -1,75 +1,34 @@
-<p align="center">  
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
+##### Backend
+
+1. Descargar el proyecto de BackVynils del repositorio: https://github.com/MISW-4203-2023/BackVynils este es el backend de la herramienta
+2. Asegúrese de tener disponibles los puertos 3000 (para la aplicación web) y 5432 (para la base de datos postgres), puede cambiar estos puertos en el archivo docker-compose.yaml
+3. Desde la carpeta raiz de “BackVynils” ejecutar el siguiente comando, para inicializar el back de la aplicación y permitir el acceso a la bd:
   
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+   ```sh
+   docker-compose up –d
+   ```
+   
+5. Debería ver una imagen similar a la siguiente:
+<img width="1209" alt="image" src="https://github.com/MISW-4203-2023/Vinilos/assets/124005780/36e6740c-b759-4358-a401-b1b0dc3e5988">
 
-## Description
+##### Aplicación
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Descargue el contenido de la rama `main`
+2. Abra el proyecto en Android Studio
+3. Obtenga la ip local de su computadora, existen comandos como `ifconfig` en sistemas basados en unix y el comando `ipconfig` para sistemas windows.
+4. Reemplace la ip en el archivo `network_security_config.xml`
 
-## Installation
+![image](https://github.com/MISW-4203-2023/Vinilos/assets/124005780/0258848b-b808-41ef-b8ec-c95901d2144e)
 
-```bash
-$ npm install
+![image](https://github.com/MISW-4203-2023/Vinilos/assets/124005780/e5f73727-4095-46cd-a3fb-b306ceda044a)
+
+5. Use la ip en el archivo `AppContainer.kt` para apuntar al servicio REST, suponiendo que su ip privada es `192.168.0.10` y que el puerto de la app web de docker es `3000` el valor de la línea 16 será:
+   
+```kt
+  private val baseUrl = "http://192.168.0.10:3000/"
 ```
 
-## Running the app
+![image](https://github.com/MISW-4203-2023/Vinilos/assets/124005780/9e0b40d5-c808-47a7-bc5b-7723e1213bcd)
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
