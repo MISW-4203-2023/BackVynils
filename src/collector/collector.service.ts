@@ -19,7 +19,16 @@ export class CollectorService {
     }
 
     async findOne(id: number): Promise<CollectorDTO> {
-        const collector = await this.collectorRepository.findOne(id, { relations: ["comments", "favoritePerformers", "collectorAlbums"] });
+        const collector = this.collectorRepository
+        .createQueryBuilder('collector')
+        .leftJoinAndSelect('collector.comments', 'comments')
+        .leftJoinAndSelect('comments.album', 'albumComments')
+        .leftJoinAndSelect('collector.favoritePerformers', 'favoritePerformers')
+        .leftJoinAndSelect('collector.collectorAlbums', 'collectorAlbums')
+        .leftJoinAndSelect('collectorAlbums.album', 'albumCollector')
+        .where('collector.id = :id', { id })
+        .getOne();
+        // const collector = await this.collectorRepository.findOne(id, { relations: ["comments", "favoritePerformers", "collectorAlbums"] });
         if (!collector)
             throw new BusinessLogicException("The collector with the given id was not found", BusinessError.NOT_FOUND)
         return collector;
